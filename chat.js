@@ -1,6 +1,7 @@
 let peer;
 let connections = {};
 let username = prompt('Enter your username:');
+let host = false;
 
 function hostGame() {
     const hostId = prompt('Enter an ID for your game room:');
@@ -12,6 +13,7 @@ function hostGame() {
             setupConnection(connection);
         });
     });
+    host = true;
 }
 
 function joinGame() {
