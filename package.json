@@ -1,0 +1,14 @@
+{
+  "name": "coltexpress",
+  "version": "1.0.0",
+  "description": "fun game",
+  "main": "game.js",
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "author": "Le grand, le magnifique, le grandiose Denis",
+  "license": "ISC",
+  "mocha": {
+    "require": "class.js"
+  }
+}

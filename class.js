@@ -1,3 +1,16 @@
+class Board
+{
+    constructor(players, train)
+    {
+        this.players = players;
+        this.nbPlayers = players.length;
+        this.roundCards = defaultRoundCards;
+        this.discardedRoundCards = [];
+        this.playedActionCards = [];
+        this.train = train;
+    }
+}
+
 class Card
 {
     constructor(id, image, position)
@@ -168,21 +181,21 @@ class OutsideWagon extends Location
 
 class Player
 {
-    static idCounter = 0;
-    static getNextId()
-    {
-        return Player.idCounter++;
-    }
     constructor(name, color)
     {
-        this.id = getNextId();
+        this.id = Player.getNextId();
         this.name = name;
         this.color = color;
-        this.position = null;
+        this.position = [0,0];
         this.hand = [];
         this.inventory = [];
         this.bullets = 6;
         this.actionCards = defaultActionCards;
+    }
+    static idCounter = 0;
+    static getNextId()
+    {
+        return Player.idCounter++;
     }
     getId()
     {
@@ -262,15 +275,3 @@ class Player
     }
 }
 
-class Board
-{
-    constructor(players, train)
-    {
-        this.players = players;
-        this.nbPlayers = players.length;
-        this.roundCards = defaultRoundCards;
-        this.discardedRoundCards = [];
-        this.playedActionCards = [];
-        this.train = train;
-    }
-}
