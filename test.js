@@ -1,4 +1,5 @@
 const assert = require('assert');
+const { Card, ActionCard, RoundCard, Train, Wagon, Location, InsideWagon, OutsideWagon, Player } = require('./class.js');
 // Language: javascript
 // Dummy globals to satisfy constructors
 global.defaultRoundCards = [];
@@ -10,12 +11,24 @@ global.defaultActionCards = [];
 // Test suite
 describe('Class Tests', function() {
     
+    // should return correct id, image and position, and update position
     describe('Card Class', function() {
-        it('should return correct id, image and position, and update position', function() {
-            const card = new Card('c1', 'img.png', [0, 0]);
+        
+        const card = new Card('c1', 'img.png', [0, 0]);
+
+        it('should return correct id', function() {
             assert.strictEqual(card.getId(), 'c1');
+        });
+        
+        it('should return correct image', function() {
             assert.strictEqual(card.getImage(), 'img.png');
+        });
+
+        it('should return position', function() {
             assert.deepStrictEqual(card.getPosition(), [0, 0]);
+        });
+
+        it('should update position', function() {
             card.setPosition([1, 1]);
             assert.deepStrictEqual(card.getPosition(), [1, 1]);
         });

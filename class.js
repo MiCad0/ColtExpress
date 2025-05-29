@@ -192,39 +192,49 @@ class Player
         this.bullets = 6;
         this.actionCards = defaultActionCards;
     }
+
     static idCounter = 0;
+    
     static getNextId()
     {
         return Player.idCounter++;
     }
+
     getId()
     {
         return this.id;
     }
+
     getName()
     {
         return this.name;
     }
+
     getColor()
     {
         return this.color;
     }
+
     getPosition()
     {
         return this.position;
     }
+
     setPosition(position)
     {
         this.position = position;
     }
+
     getHand()
     {
         return this.hand;
     }
+
     addToHand(card)
     {
         this.hand.push(card);
     }
+
     removeFromHand(card)
     {
         const index = this.hand.indexOf(card);
@@ -233,14 +243,17 @@ class Player
             this.hand.splice(index, 1);
         }
     }
+
     getInventory()
     {
         return this.inventory;
     }
+
     addToInventory(item)
     {
         this.inventory.push(item);
     }
+
     removeFromInventory(item)
     {
         const index = this.inventory.indexOf(item);
@@ -249,10 +262,12 @@ class Player
             this.inventory.splice(index, 1);
         }
     }
+
     getBullets()
     {
         return this.bullets;
     }
+
     shootBullet(player)
     {
         if (this.bullets > 0)
@@ -265,13 +280,36 @@ class Player
             throw new Error("No bullets left");
         }
     }
+
     getActionCards()
     {
         return this.actionCards;
     }
+
     addActionCard(card)
     {
         this.actionCards.push(card);
     }
+
+    turn()
+    {
+        const action = prompt("Choose an action: ");
+        switch (action)
+        {
+            case "draw":
+                for(let i = 0; i < 3; i++){
+                    const card = this.drawActionCard();
+                    this.addToHand(card);
+                }
+                break;
+            case "play":
+                const cardToPlay = prompt("Enter card to play: ");
+                this.removeFromHand(cardToPlay);
+                break;
+            default:
+                console.log("Invalid action");
+        }
+    }
 }
 
+module.exports = { Board, Card, ActionCard, RoundCard, Train, Wagon, Location, InsideWagon, OutsideWagon, Player };

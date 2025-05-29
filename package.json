@@ -10,5 +10,8 @@
   "license": "ISC",
   "mocha": {
     "require": "class.js"
+  },
+  "devDependencies": {
+    "mocha": "^11.2.2"
   }
 }
