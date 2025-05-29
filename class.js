@@ -297,15 +297,19 @@ class Player
         switch (action)
         {
             case "draw":
-                for(let i = 0; i < 3; i++){
+                for(let i = 0; i < 3; i++)
+                {
                     const card = this.drawActionCard();
                     this.addToHand(card);
                 }
                 break;
             case "play":
                 const cardToPlay = prompt("Enter card to play: ");
-                this.removeFromHand(cardToPlay);
-                break;
+                if (cardToPlay in this.getHand())
+                {
+                    this.removeFromHand(cardToPlay);
+                    break;
+                }
             default:
                 console.log("Invalid action");
         }
